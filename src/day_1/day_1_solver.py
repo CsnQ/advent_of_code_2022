@@ -11,5 +11,4 @@ class Day1:
     def part_2(calorie_list: List[List[int]]) -> int:
         total_cals_per_elf = [sum(x)for x in calorie_list]
         total_cals_per_elf.sort(reverse=True)
-        return total_cals_per_elf[0]+total_cals_per_elf[1]+total_cals_per_elf[2]
-
+        return sum(total_cals_per_elf[:3])
