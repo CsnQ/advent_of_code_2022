@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from src.day_1 import day_1_solver
+from src import day_1_solver
 from src.utils import text_parser
 
 
