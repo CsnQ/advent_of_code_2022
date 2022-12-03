@@ -37,8 +37,7 @@ def get_running_total(common_item: str, current_total: int) -> int:
 
 def get_rucksack_groupings(rucksack_contents: List[str]) -> List[List[str]]:
     grouping = 3
-    groupings = []
     for i in range(0, len(rucksack_contents), grouping):
-        group = yield rucksack_contents[i:i + grouping]
-        groupings.append(group)
-    return groupings
+        yield rucksack_contents[i:i + grouping]
+
+
