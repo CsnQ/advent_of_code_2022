@@ -9,10 +9,8 @@ def part_1(rucksack_contents: List[str]) -> int:
         half = int(len(content) / 2)
         first_compartment = set(content[:half])
         second_compartment = set(content[half:])
-        common_item = list(first_compartment.intersection(second_compartment))
-        for item in common_item:
-            letter_value = letters.index(item) + 1
-            total = total + letter_value
+        common_item = list(first_compartment.intersection(second_compartment))[0]
+        total = getting_running_total(common_item, total)
 
     return total
 
@@ -25,11 +23,15 @@ def part_2(rucksack_contents: List[str]) -> int:
         group_2_set = set(group[1])
         group_3_set = set(group[2])
         intersection_of_1_and_2 = group_1_set.intersection(group_2_set)
-        common_item = list(group_3_set.intersection(intersection_of_1_and_2))
-        for item in common_item:
-            letter_value = letters.index(item) + 1
-            total = total + letter_value
+        common_item = list(group_3_set.intersection(intersection_of_1_and_2))[0]
+        total = getting_running_total(common_item, total)
 
+    return total
+
+
+def getting_running_total(common_item: str, current_total: int) -> int:
+    letter_value = letters.index(common_item) + 1
+    total = current_total + letter_value
     return total
 
 
