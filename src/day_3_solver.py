@@ -17,8 +17,7 @@ def part_1(rucksack_contents: List[str]) -> int:
 
 def part_2(rucksack_contents: List[str]) -> int:
     total = 0
-    groupings = get_rucksack_groupings(rucksack_contents)
-    for group in groupings:
+    for group in get_rucksack_groupings(rucksack_contents):
         group_1_set = set(group[0])
         group_2_set = set(group[1])
         group_3_set = set(group[2])
