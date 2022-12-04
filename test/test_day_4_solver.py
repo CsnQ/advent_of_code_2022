@@ -44,6 +44,7 @@ class TestPart1:
         actual_result = part_1(example_input)
         assert actual_result == expected_result
 
+
 class TestPart2:
     def test_returns_1_with_example_data(self):
         test_input = ['5-7,7-9']

@@ -1,24 +1,29 @@
+class ProcessedTaskPairs:
+    def __init__(self, task_pair):
+        self.task_pair = task_pair
+        self.tasks = task_pair.split(',')
+        self.task_a = self.tasks[0].split('-')
+        self.task_b = self.tasks[1].split('-')
+        self.a_min = int(self.task_a[0])
+        self.a_max = int(self.task_a[1])
+        self.b_min = int(self.task_b[0])
+        self.b_max = int(self.task_b[1])
+
+
 def part_1(task_superset: list[str]) -> int:
     overlap_counter = 0
     for task_pair in task_superset:
-        tasks = task_pair.split(',')
-        task_a = tasks[0].split('-')
-        task_b = tasks[1].split('-')
+        tasks = ProcessedTaskPairs(task_pair)
 
-        task_a_min = int(task_a[0])
-        task_a_max = int(task_a[1])
-        task_b_min = int(task_b[0])
-        task_b_max = int(task_b[1])
-
-        if task_a_min == task_b_min and task_a_max == task_b_max:
+        if tasks.a_min == tasks.b_min and tasks.a_max == tasks.b_max:
             overlap_counter += 1
             continue
 
-        if task_a_min <= task_b_min and task_a_max >= task_b_max:
+        if tasks.a_min <= tasks.b_min and tasks.a_max >= tasks.b_max:
             overlap_counter += 1
             continue
 
-        if task_a_min >= task_b_min and task_a_max <= task_b_max:
+        if tasks.a_min >= tasks.b_min and tasks.a_max <= tasks.b_max:
             overlap_counter += 1
             continue
 
@@ -28,16 +33,9 @@ def part_1(task_superset: list[str]) -> int:
 def part_2(task_superset: list[str]) -> int:
     overlap_counter = 0
     for task_pair in task_superset:
-        tasks = task_pair.split(',')
-        task_a = tasks[0].split('-')
-        task_b = tasks[1].split('-')
+        tasks = ProcessedTaskPairs(task_pair)
 
-        task_a_min = int(task_a[0])
-        task_a_max = int(task_a[1])
-        task_b_min = int(task_b[0])
-        task_b_max = int(task_b[1])
-
-        if task_a_max >= task_b_min and task_b_max >= task_a_min:
+        if tasks.a_max >= tasks.b_min and tasks.b_max >= tasks.a_min:
             overlap_counter += 1
 
     return overlap_counter
